@@ -1,0 +1,89 @@
+#id{
+    float: left;
+}
+
+#id img{
+    width: 30px;
+    margin-top: 18px;
+}
+
+#staty{
+    height: auto;
+    width: 6cm;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: wheat;
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: cadetblue;
+
+}
+#menu_okno{
+    margin-top: 50px;
+    position: absolute;
+    bottom: 31%;
+}
+#menu{
+    border-style: solid;
+    border-color: wheat;
+    border-radius: 5px;
+    border-width: 2px;
+
+}
+
+body{
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+a{
+    padding-right: 5px;
+}
+
+#menu button {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#menu #click{
+    float:left;
+}
+
+#menu{
+    height: 30%;
+    width: 99%;
+    position: absolute;
+    bottom: 0;
+}
+#glowny{
+    height: 101%;
+}
+
+#menu #upg{
+    float:left;
+}
+
+#zasoby{
+  
+ 
+  margin-top: 100px;
+  margin-left: 10cm;
+
+
+  
+}
+
+#ekran{
+    height: 68%;
+}
+
+#dz1{
+    float: left;
+    
+}
+
+#dz2{
+    width: 50%;
+    float: right;
+}

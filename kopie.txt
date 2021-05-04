@@ -1,0 +1,9 @@
+if(Cookies.get("click") != null && Cookies.get("click") != "undefined"){
+        var click3 = JSON.parse(Cookies.get("click"));
+        for(i in click.upg){
+            if(click3.upg[i] == null){
+                click3.upg[i] = click.upg[i];
+            }
+        }
+        click.upg = click3;
+    }
