@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Idle game</title>
+        <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet" type="text/css">
+        <script src="js.js"></script>
+    </head>
+    <body onload="aktualizacja()" background="img/kamieniołom.jpg">
+    <div id='glowny'>
+        <div id=ekran>
+            <div id='dz1'>
+                <div id='staty'>
+                    <div id='id'>        
+                        <img src='img/4.png'></img><br>
+                        <img src='img/5.png'></img><br>
+                        <img src='img/9.png'></img><br>
+                        <img src='img/10.png'></img>
+                    </div>
+    
+                    <div>
+                        <h2 id='money'>: 0</h2>
+                        <h2 id='zloto'>: 0</h2>
+                        <h2 id='kamien'>: 0</h2>
+                        <h2 id='drewno'>: 0</h2>
+                    </div>  
+                </div> 
+            </div>
+            <div id='dz2'>
+                <div id='zasoby'>
+                    <img src="img/rock.png" onclick="click2('kamien')" width="500px"></img>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div id='menu_okno'>
+            <a href="las.html"><input type="submit" value="las"></a>
+            <a href="kamieniołom.html"><input type="submit" value="kamieniołom"></a>
+            <a href="kopalnia.html"><input type="submit" value="kopalnia"></a>
+            <a href="miasto.html"><input type="submit" value="miasto"></a>
+        </div>
+
+
+        <div id='menu'>
+            <div id='las'  hidden>
+            </div>
+            <div id='kamieniolom'>
+            </div>
+            <div id='kopalnia' hidden>
+            </div>
+            <div id='miasto' hidden>
+            </div>
+            <br><br><br><br>
+        </div>
+    </div>
+    </body>
+</html>

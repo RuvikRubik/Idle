@@ -5,7 +5,7 @@
         <link href="main.css" rel="stylesheet" type="text/css">
         <script src="js.js"></script>
     </head>
-    <body onload="aktualizacja()" background="img/las.jpg">
+    <body onload="aktualizacja()" background="img/kopalnia.jpg">
     <div id='glowny'>
         <div id=ekran>
             <div id='dz1'>
@@ -20,30 +20,35 @@
                     <div>
                         <h2 id='money'>: 0</h2>
                         <h2 id='zloto'>: 0</h2>
-                        <h2 id='money'>: 0</h2>
-                        <h2 id='money'>: 0</h2>
+                        <h2 id='kamien'>: 0</h2>
+                        <h2 id='drewno'>: 0</h2>
                     </div>  
                 </div> 
             </div>
             <div id='dz2'>
                 <div id='zasoby'>
-                    <img src="img/tree.png" onclick="click2('money')"></img>
+                    <img src="img/gold_ore.jpg" onclick="click2('zloto')" width="500px"></img>
                 </div>
             </div>
             
             
         </div>
         <div id='menu_okno'>
-            <a href="main.html"><input type="submit" value="main"></a>
-            <a href="upg.html"><input type="submit" value="upgrade"></a>
+            <a href="las.html"><input type="submit" value="las"></a>
+            <a href="kamieniołom.html"><input type="submit" value="kamieniołom"></a>
+            <a href="kopalnia.html"><input type="submit" value="kopalnia"></a>
+            <a href="miasto.html"><input type="submit" value="miasto"></a>
         </div>
 
 
         <div id='menu'>
-            <div id='click'>
-                <button onclick="exp()">export</button>
+            <div id='las' hidden>
             </div>
-            <div id='upg' hidden>
+            <div id='kamieniolom' hidden>
+            </div>
+            <div id='kopalnia'>
+            </div>
+            <div id='miasto' hidden>
             </div>
             <br><br><br><br>
         </div>

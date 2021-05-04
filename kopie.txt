@@ -1,9 +1,36 @@
-if(Cookies.get("click") != null && Cookies.get("click") != "undefined"){
-        var click3 = JSON.parse(Cookies.get("click"));
-        for(i in click.upg){
-            if(click3.upg[i] == null){
-                click3.upg[i] = click.upg[i];
-            }
-        }
-        click.upg = click3;
+function las_upg_clicked(thing,gdzie){
+    if(click.drewno>= click.gdzie[thing].cost){
+        
+        click.drewno -= click.las_upg[thing].cost;
+        click.las_upg[thing].ilosc++;
+        click.las_upg[thing].cost += Math.round(click.las_upg[thing].cost*0.2);
+        las_upg();
     }
+    
+}
+
+function las_upg(){
+    document.querySelector("#las").innerHTML ="";
+    for(i in click.las_upg){
+        document.querySelector("#las").innerHTML += `<button onclick="las_upg_clicked('${i,'las_upg'}')">${click.las_upg[i].nazwa}
+        </button> masz: ${click.las_upg[i].ilosc}  gps: ${click.las_upg[i].gps*click.las_upg[i].ilosc} cena: ${numberformat.format(Number(click.las_upg[i].cost))}<br>`;
+    }
+}
+
+function kopalnia_upg(){
+    document.querySelector("#kopalnia").innerHTML ="";
+    for(i in click.kopalnia_upg){
+        document.querySelector("#kopalnia").innerHTML += `<button onclick="kopalnia_upg_clicked('${i,'kopalnia_upg'}')">${click.kopalnia_upg[i].nazwa}
+        </button> masz: ${click.kopalnia_upg[i].ilosc}  gps: ${click.kopalnia_upg[i].gps*click.las_upg[i].ilosc}
+         cena: ${numberformat.format(Number(click.kopalnia_upg[i].cost))}<br>`;
+    }
+}
+
+function kamieniolom_upg(){
+    document.querySelector("#kamieniolom").innerHTML ="";
+    for(i in click.kamieniolom_upg){
+        document.querySelector("#kamieniolom").innerHTML += `<button onclick="kamieniolom_upg_clicked('${i,'kamieniolom_upg'}')">${click.kamieniolom_upg[i].nazwa}
+        </button> masz: ${click.kamieniolom_upg[i].ilosc}  gps: ${click.kamieniolom_upg[i].gps*click.kamieniolom_upg[i].ilosc}
+         cena: ${numberformat.format(Number(click.kamieniolom_upg[i].cost))}<br>`;
+    }
+}

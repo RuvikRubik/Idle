@@ -5,7 +5,9 @@
 var click = {
     money:0,
     zloto:0,
-    upg: {
+    drewno:0,
+    kamien:0,
+    las_upg: {
         drwal: {
             ilosc:0,
             cost:10,
@@ -15,63 +17,152 @@ var click = {
         drwal2: {
             ilosc:0,
             cost: 50,
-        gps:50,
-        nazwa:"drwal2"
+            gps:5,
+            nazwa:"drwal2"
+        }
+    },
+    kamieniolom_upg:{
+        kopacz: {
+            ilosc:0,
+            cost:10,
+            gps:1,
+            nazwa:"kopacz"
+        },
+        kopacz2: {
+            ilosc:0,
+            cost: 50,
+            gps:50,
+            nazwa:"kopacz2"
+        }
+    },
+    kopalnia_upg:{
+        górnik: {
+            ilosc:0,
+            cost:10,
+            gps:1,
+            nazwa:"górnik"
+        },
+        górnik2: {
+            ilosc:0,
+            cost: 50,
+            gps:50,
+            nazwa:"górnik2"
         }
     }
 };
 
-/*function exp() { 
-    fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-      });
-}
-var fs = require('fs');*/
+
 var czas =  0;
 function click2(thing){
     click[thing]++;
 }
 
-function upg_clicked(thing){
-    if(click.money>= click.upg[thing].cost){
-        click.money= click.money - click.upg[thing].cost;
-        click.upg[thing].ilosc++;
-        click.upg[thing].cost += Math.round(click.upg[thing].cost*0.2);
-        update_upg();
+function las_upg_clicked(thing){
+    if(click.drewno>= click.las_upg[thing].cost){
+        click.drewno -= click.las_upg[thing].cost;
+        click.las_upg[thing].ilosc++;
+        click.las_upg[thing].cost += Math.round(click.las_upg[thing].cost*0.2);
+        las_upg();
     }
     
 }
 
-function update_upg(){
-    document.querySelector("#upg").innerHTML ="";
-    for(i in click.upg){
-        document.querySelector("#upg").innerHTML += `<button onclick="upg_clicked('${i}')">${click.upg[i].nazwa}
-        </button> masz: ${click.upg[i].ilosc}  gps: ${click.upg[i].gps*click.upg[i].ilosc} cena: ${numberformat.format(Number(click.upg[i].cost))}<br>`;
+function kopalnia_upg_clicked(thing){
+    if(click.zloto>= click.kopalnia_upg[thing].cost){
+        click.zloto -= click.kopalnia_upg[thing].cost;
+        click.kopalnia_upg[thing].ilosc++;
+        click.kopalnia_upg[thing].cost += Math.round(click.kopalnia_upg[thing].cost*0.2);
+        kopalnia_upg();
     }
-}   
+    
+}
+
+function kamieniolom_upg_clicked(thing){
+    if(click.kamien>= click.kamieniolom_upg[thing].cost){
+        click.kamien -= click.kamieniolom_upg[thing].cost;
+        click.kamieniolom_upg[thing].ilosc++;
+        click.kamieniolom_upg[thing].cost += Math.round(click.kamieniolom_upg[thing].cost*0.2);
+        kamieniolom_upg();
+    }
+    
+}
+
+function las_upg(){
+    document.querySelector("#las").innerHTML ="";
+    for(i in click.las_upg){
+        document.querySelector("#las").innerHTML += `<button onclick="las_upg_clicked('${i}')">${click.las_upg[i].nazwa}
+        </button> masz: ${click.las_upg[i].ilosc}  gps: ${click.las_upg[i].gps*click.las_upg[i].ilosc} cena: ${numberformat.format(Number(click.las_upg[i].cost))}<br>`;
+    }
+}
+
+function kopalnia_upg(){
+    document.querySelector("#kopalnia").innerHTML ="";
+    for(i in click.kopalnia_upg){
+        document.querySelector("#kopalnia").innerHTML += `<button onclick="kopalnia_upg_clicked('${i}')">${click.kopalnia_upg[i].nazwa}
+        </button> masz: ${click.kopalnia_upg[i].ilosc}  gps: ${click.kopalnia_upg[i].gps*click.kopalnia_upg[i].ilosc}
+         cena: ${numberformat.format(Number(click.kopalnia_upg[i].cost))}<br>`;
+    }
+}
+
+function kamieniolom_upg(){
+    document.querySelector("#kamieniolom").innerHTML ="";
+    for(i in click.kamieniolom_upg){
+        document.querySelector("#kamieniolom").innerHTML += `<button onclick="kamieniolom_upg_clicked('${i}')">${click.kamieniolom_upg[i].nazwa}
+        </button> masz: ${click.kamieniolom_upg[i].ilosc}  gps: ${click.kamieniolom_upg[i].gps*click.kamieniolom_upg[i].ilosc}
+         cena: ${numberformat.format(Number(click.kamieniolom_upg[i].cost))}<br>`;
+    }
+}
+
+function miasto_upg(){
+    document.querySelector("#miasto").innerHTML =`<button onclick="sell()">sell</button> <button onclick="res()">reset</button>`;
+}
+
+function sell(){
+    click.money +=  click.drewno+click.kamien+click.zloto;
+    click.drewno=0;
+    click.kamien=0;
+    click.zloto=0;
+}
+
+function res(){
+    click.money =0
+    click.drewno=0;
+    click.kamien=0;
+    click.zloto=0;
+}
 
 function aktualizacja(){
     if(Cookies.get("click") != null && Cookies.get("click") != "undefined"){
         var click3 = JSON.parse(Cookies.get("click"));
-        for(i in click.upg){
-            if(click3.upg[i] == null){
-                click3.upg[i] = click.upg[i];
+        for(i in click.las_upg){
+            if(click3.las_upg[i] == null){
+                click3.las_upg[i] = click.las_upg[i];
             }
         }
         click = click3;
     }
-    update_upg();
+    miasto_upg();
+    las_upg();
+    kopalnia_upg();
+    kamieniolom_upg();
      setInterval(()=> {
-     for(i in click.upg){
-        click.money+=click.upg[i].ilosc*click.upg[i].gps/20;
+     for(i in click.las_upg){
+        click.drewno+=click.las_upg[i].ilosc*click.las_upg[i].gps/20;
+        
      }
+     for(i in click.kopalnia_upg){
+        click.zloto+=click.kopalnia_upg[i].ilosc*click.kopalnia_upg[i].gps/20;
+     }
+     for(i in click.kamieniolom_upg){
+        click.kamien+=click.kamieniolom_upg[i].ilosc*click.kamieniolom_upg[i].gps/20;
+     }   
     document.querySelector('#money').innerHTML = ': '+numberformat.format(Number( String(click.money).split(".")[0]));
-    document.querySelector('#zloto').innerHTML = ': '+numberformat.format(Number(String(click.zloto).split(".")[0])); 
+    document.querySelector('#zloto').innerHTML = ': '+numberformat.format(Number(String(click.zloto).split(".")[0]));
+    document.querySelector('#kamien').innerHTML = ': '+numberformat.format(Number(String(click.kamien).split(".")[0])); 
+    document.querySelector('#drewno').innerHTML = ': '+numberformat.format(Number(String(click.drewno).split(".")[0]));  
     czas++;
     if(czas >=10){
         Cookies.set("click",JSON.stringify(click), {expires: 100000});
-        Cookies.set("lasttime", Date.now(), {expires: 100000});
         czas = 0;
     }
     },50)
